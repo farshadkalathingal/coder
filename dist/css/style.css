@@ -3,34 +3,64 @@
   padding: 0;
 }
 
+:root {
+  --primary-color: #ffffff;
+  --text-color: #000;
+}
+
 body {
-  background-color: #ffffff;
-  color: #000;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
 }
 
 .sidebar {
   width: 15%;
   height: 100%;
+  z-index: 1;
   background-color: dimgray;
   float: left;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 .sidebar .sidebar-item {
-  color: #fff;
+  color: var(--primary-color);
   text-decoration: none;
-  text-transform: uppercase;
   display: block;
-  padding: 1%;
+  padding: .2rem;
+  padding-left: 1rem;
+}
+
+.sidebar .sidebar-item :hover {
+  background-color: #d4d4d4;
+  color: var(--text-color);
 }
 
 .sidebar .item-active {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
-.sidebar .sidebar-item:hover {
-  background-color: #d4d4d4;
-  color: #000;
+main {
+  width: 85%;
+  float: right;
+}
+
+@media screen and (max-width: 540px) {
+  .sidebar {
+    width: 0%;
+    z-index: 1;
+    height: 90vh;
+    position: fixed;
+    overflow-x: hidden;
+  }
+  .sidebar-visible {
+    width: 50%;
+  }
+  main {
+    width: 100%;
+  }
 }
 
 .navbar {
@@ -42,15 +72,56 @@ body {
 }
 
 .navbar .nav-link {
-  color: #000;
+  color: var(--text-color);
+}
+
+.navbar .nav-link:first-child {
+  display: none;
 }
 
 .navbar .active {
-  color: #fff !important;
+  color: var(--primary-color) !important;
 }
 
-main {
-  width: 85%;
-  float: right;
+.navbar .dropdown {
+  display: none;
+}
+
+.navbar .dropdown-menu {
+  min-width: 100% !important;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.navbar li a :hover {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.navbar .dropdown-link {
+  color: var(--text-color);
+}
+
+.navbar .dropdown-link :hover {
+  background-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+@media screen and (max-width: 540px) {
+  .navbar .nav-link:first-child {
+    display: block !important;
+  }
+  .navbar .nav-link:nth-child(2) {
+    display: block;
+  }
+  .navbar .nav-link {
+    display: none;
+  }
+  .navbar .visible {
+    display: block;
+  }
+  .navbar .dropdown {
+    display: block;
+  }
 }
 /*# sourceMappingURL=style.css.map */
